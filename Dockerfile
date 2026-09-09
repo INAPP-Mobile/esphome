@@ -27,5 +27,8 @@ ENV ESPHOME_DATA_DIR=/tmp/esphome
 LABEL org.opencontainers.image.source="https://github.com/mc9max/esphome"
 LABEL org.opencontainers.image.description="ESPHome Railway template"
 EXPOSE 6052
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
-    CMD wget -qO- http://127.0.0.1:6052/version || exit 1
+# Note: no Docker HEALTHCHECK — the upstream image ships no wget/curl,
+# and Railway's platform healthcheck is already wired to /version
+# via railway.json deploy.healthcheckPath. A redundant in-container
+# HEALTHCHECK would just mark the container unhealthy with the same
+# /version probe Railway runs anyway.
