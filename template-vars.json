@@ -1,0 +1,12 @@
+{
+  "PORT": {
+    "defaultValue": "6052",
+    "description": "Dashboard HTTP port. Must match the ESPHome default port 6052.",
+    "isOptional": false
+  },
+  "TZ": {
+    "defaultValue": "UTC",
+    "description": "Timezone for log timestamps (e.g. America/New_York).",
+    "isOptional": true
+  }
+}
